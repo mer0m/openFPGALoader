@@ -19,6 +19,7 @@ module spiOverJtag
 `elsif xilinxultrascale
 `else
  // Xilinx 7 but not ultrascale
+	output sck,
 	output csn,
 	output sdi_dq0,
 	input  sdo_dq1,
@@ -127,6 +128,7 @@ module spiOverJtag
 		.USRDONETS(1'b1)  // ??
 	);
 `else
+	assign sck = drck;
 	STARTUPE2 #(
 		.PROG_USR("FALSE"),  // Activate program event security feature. Requires encrypted bitstreams.
 		.SIM_CCLK_FREQ(0.0)  // Set the Configuration Clock Frequency(ns) for simulation.
